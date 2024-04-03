@@ -85,7 +85,33 @@ const userLogin = asyncHandler(async (req, res) => {
   }
 });
 
+const updateProfile = async (req, res) => {
+    try {
+        const userId = req.params.id; 
+        const { fullName, avatar } = req.body;
+    
+        // Check if user with the given ID exists
+        const user = await UserModel.findById(userId);
+        if (!user) {
+          return res.status(404).json({ message: 'User not found' });
+        }
+    
+        // Update user profile
+        user.fullName = fullName;
+        user.avatar = avatar;
+    
+        // Save the updated user profile
+        await user.save();
+    
+        res.status(200).json({ message: 'Profile updated successfully' });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+      }
+};
+
 module.exports = {
   userRegister,
-  userLogin 
+  userLogin,
+  updateProfile,
 };
