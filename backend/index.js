@@ -3,6 +3,7 @@ const express = require("express");
 
 const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user_routes");
+const {categoryRouter} = require("./routes/category_routes")
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/user", userRouter);
+app.use("/category", categoryRouter);
 
 // Not found route
 app.use((req, res) => {
