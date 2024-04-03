@@ -47,6 +47,45 @@ const userRegister = asyncHandler(async (req, res) => {
   }
 });
 
+const userLogin = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    if (!email || !password) {
+      return res.status(400).json({ error: "Please provide all the details" });
+    }
+
+    // Find the user by email
+    const user = await UserModel.findOne({ email: email });
+
+    if (!user) {
+      return res.status(400).json({ error: "User does not exist" });
+    }
+
+    // Compare the password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
+      return res.status(400).json({ error: "Wrong password" });
+    }
+
+    // Generate JWT token
+    const { password: _, ...userData } = user.toObject();
+    const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "10d",
+    });
+    const responseData = { ...userData, token };
+
+    return res.status(200).json(responseData);
+  } catch (error) {
+    console.log(error);
+    return res
+      .status(400)
+      .json({ error: "An error occurred while logging in the user" });
+  }
+});
+
 module.exports = {
   userRegister,
+  userLogin 
 };
