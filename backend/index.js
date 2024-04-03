@@ -2,15 +2,18 @@ require("dotenv").config();
 const express = require("express");
 
 const { connection } = require("./config/db");
+const { userRouter } = require("./routes/user_routes");
 
 const app = express();
 app.use(express.json());
 
 // Home route
 app.get("/", (req, res) => {
-  res.send({msg:"Welcome to the home page!"});
+  res.send({ msg: "Welcome to the home page!" });
 });
 
+// Routes
+app.use("/user", userRouter);
 
 // Not found route
 app.use((req, res) => {
