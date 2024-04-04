@@ -5,6 +5,7 @@ const { connection } = require("./config/db");
 const { userRouter } = require("./routes/user_routes");
 const {categoryRouter} = require("./routes/category_routes")
 const {productRouter} = require("./routes/product_routes")
+// const  authorization = require("./middleware/authorization")
 
 const app = express();
 app.use(express.json());

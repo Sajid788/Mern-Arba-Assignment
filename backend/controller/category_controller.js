@@ -3,7 +3,8 @@ const { CategoryModel } = require("../model/category_model");
 // Create Category
 const createCategory = async (req, res) => {
   try {
-    const { name, slug, image, userId } = req.body;
+    const userId = req.userId
+    const { name, slug, image } = req.body;
     // Check if category with the same slug already exists
     const existingCategory = await CategoryModel.findOne({ slug });
     if (existingCategory) {
@@ -16,7 +17,7 @@ const createCategory = async (req, res) => {
       name,
       slug,
       image,
-      userId,
+      owner:userId,
     });
 
     await category.save();

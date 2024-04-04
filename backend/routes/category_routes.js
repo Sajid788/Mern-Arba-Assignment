@@ -6,13 +6,14 @@ const {
   getCategoryById,
   deleteCategory,
 } = require("../controller/category_controller");
+const  {authorization} = require("../middleware/authorization")
 
 const categoryRouter = express.Router();
 
-categoryRouter.post("/", createCategory);
-categoryRouter.patch("/:id", updateCategory);
+categoryRouter.post("/",authorization, createCategory);
+categoryRouter.patch("/:id",authorization, updateCategory,authorization);
 categoryRouter.get("/", getCategories);
 categoryRouter.get("/:id", getCategoryById);
-categoryRouter.delete("/:id", deleteCategory);
+categoryRouter.delete("/:id",authorization, deleteCategory);
 
 module.exports = {categoryRouter};

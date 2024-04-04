@@ -6,12 +6,13 @@ const {
     getProductById,
     deleteProduct
 } = require('../controller/product_controller');
+const  {authorization} = require('../middleware/authorization');
 const productRouter = express.Router();
 
-productRouter.post('/', createProduct);
-productRouter.patch('/:id', updateProduct);
+productRouter.post('/', authorization, createProduct);
+productRouter.patch('/:id', authorization, updateProduct);
 productRouter.get('/', getProducts);
 productRouter.get('/:id', getProductById);
-productRouter.delete('/:id', deleteProduct);
+productRouter.delete('/:id', authorization, deleteProduct);
 
 module.exports = {productRouter};

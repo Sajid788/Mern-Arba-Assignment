@@ -50,64 +50,52 @@ const userRegister = asyncHandler(async (req, res) => {
 const userLogin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.send({ msg: "please fill the all feild" });
+  }
   try {
-    if (!email || !password) {
-      return res.status(400).json({ error: "Please provide all the details" });
-    }
-
-    // Find the user by email
-    const user = await UserModel.findOne({ email: email });
-
+    const user = await UserModel.findOne({ email });
     if (!user) {
-      return res.status(400).json({ error: "User does not exist" });
+      return res.send({ msg: "singup first" });
     }
-
-    // Compare the password
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-
-    if (!isPasswordValid) {
-      return res.status(400).json({ error: "Wrong password" });
-    }
-
-    // Generate JWT token
-    const { password: _, ...userData } = user.toObject();
-    const token = jwt.sign({ userID: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "10d",
+    bcrypt.compare(password, user.password, async (err, result) => {
+      if (result) {
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+        res.send({
+          token: token,
+          msg: "Login sucessfull",
+        });
+      }
+      res.send({ msg: "wrong credential" });
     });
-    const responseData = { ...userData, token };
-
-    return res.status(200).json(responseData);
   } catch (error) {
     console.log(error);
-    return res
-      .status(400)
-      .json({ error: "An error occurred while logging in the user" });
   }
 });
 
 const updateProfile = async (req, res) => {
-    try {
-        const userId = req.params.id; 
-        const { fullName, avatar } = req.body;
-    
-        // Check if user with the given ID exists
-        const user = await UserModel.findById(userId);
-        if (!user) {
-          return res.status(404).json({ message: 'User not found' });
-        }
-    
-        // Update user profile
-        user.fullName = fullName;
-        user.avatar = avatar;
-    
-        // Save the updated user profile
-        await user.save();
-    
-        res.status(200).json({ message: 'Profile updated successfully' });
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Internal server error' });
-      }
+  try {
+    const userId = req.params.id;
+    const { fullName, avatar } = req.body;
+
+    // Check if user with the given ID exists
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Update user profile
+    user.fullName = fullName;
+    user.avatar = avatar;
+
+    // Save the updated user profile
+    await user.save();
+
+    res.status(200).json({ message: "Profile updated successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 };
 
 module.exports = {
