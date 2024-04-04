@@ -91,7 +91,7 @@ const deleteCategory = async (req, res) => {
   try {
     const categoryId = req.params.id;
 
-    // Find the category by ID
+    // Find the category by ID using CategoryModel
     const category = await CategoryModel.findById(categoryId);
     if (!category) {
       return res.status(404).json({ message: "Category not found" });
@@ -102,7 +102,6 @@ const deleteCategory = async (req, res) => {
 
     res.status(200).json({ message: "Category deleted successfully" });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
@@ -112,5 +111,5 @@ module.exports = {
   updateCategory,
   getCategories,
   getCategoryById,
-  deleteCategory
+  deleteCategory,
 };
