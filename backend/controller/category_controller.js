@@ -3,8 +3,7 @@ const { CategoryModel } = require("../model/category_model");
 // Create Category
 const createCategory = async (req, res) => {
   try {
-    const { name, slug, image, owner } = req.body;
-
+    const { name, slug, image, userId } = req.body;
     // Check if category with the same slug already exists
     const existingCategory = await CategoryModel.findOne({ slug });
     if (existingCategory) {
@@ -17,7 +16,7 @@ const createCategory = async (req, res) => {
       name,
       slug,
       image,
-      owner,
+      userId,
     });
 
     await category.save();
@@ -88,21 +87,17 @@ const getCategoryById = async (req, res) => {
 };
 
 const deleteCategory = async (req, res) => {
+  const id = req.params.id;
+  const userId = req.userId;
   try {
-    const categoryId = req.params.id;
-
-    // Find the category by ID using CategoryModel
-    const category = await CategoryModel.findById(categoryId);
+    const category = await CategoryModel.findOneAndDelete({ _id: id, userId });
     if (!category) {
-      return res.status(404).json({ message: "Category not found" });
+      return res.status(404).json({ msg: "Category not found" });
     }
-
-    // Delete the category
-    await category.remove();
-
-    res.status(200).json({ message: "Category deleted successfully" });
+    res.status(200).json({ msg: "Category deleted successfully" });
   } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
+    console.error(error);
+    res.status(500).json({ msg: "Internal server error" });
   }
 };
 
