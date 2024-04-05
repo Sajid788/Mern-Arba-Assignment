@@ -2,7 +2,7 @@
 # Arba-Mern-Stack
 
  ### Frontend 
- live link :- storied-marzipan-581e74.netlify.app
+ live link :- https://storied-marzipan-581e74.netlify.app/
  ### Backend 
  live link:- https://arba-backend-3585.vercel.app/
 
