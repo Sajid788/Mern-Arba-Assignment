@@ -1,7 +1,6 @@
 
 # Arba-Mern-Stack
 
- Frontend live link :-
 Backend live link:- https://arba-backend-3585.vercel.app/
 
 ## Feature
