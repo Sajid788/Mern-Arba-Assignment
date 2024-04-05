@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-// import Navbar from "./Navbar";
-// import Carousel from "./Carousel";
-// import Product from "./Product";
 import {
   Box,
   Button,
@@ -23,11 +20,7 @@ export const Homepage = () => {
 
   const handleConfirm = () => {
     setIsOpen(false);
-  };
-
-  //   const handleClick =()=> {
-  //     navigate('/product')
-  //   }
+  }
   return (
     <>
       <Modal isOpen={isOpen}>
