@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../componants/Coursel";
+import Product from "./Product";
 
 export const Homepage = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -42,17 +43,17 @@ export const Homepage = () => {
               Cancel
             </Button>
             <Button colorScheme="teal" onClick={handleConfirm}>
-              Confirm
+              Accept
             </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
-
-      <Box></Box>
       <Box>
         <Carousel />
       </Box>
-      <Box></Box>
+      <Box>
+      <Product />
+      </Box>
     </>
   );
 };
