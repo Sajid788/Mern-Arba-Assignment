@@ -1,3 +1,4 @@
+![Screenshot 2024-04-05 184019](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/ad7b88fb-f594-451d-9738-9c25359accbc)
 # Arba-Mern-Stack
 
  Frontend live link :- https://tasksa.netlify.app/
@@ -40,7 +41,8 @@ Backend live link:- https://arba-backend-3585.vercel.app/
 - `PATCH`    /product/:id
 
 ### 1. Signup 
-![Screenshot 2024-04-04 210144](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/ed7537a9-8172-45aa-99a4-688d5a481542)
+![Screenshot 2024-04-05 184019](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/d37de9a0-ba68-4200-9ec5-b576b9f2c3b3)
+
 
 ### 2. Login Page
 ![Screenshot 2024-04-05 184042](https://github.com/Sajid788/Green-mentor-Assignment/assets/129252454/dac3a480-e70c-4563-9d00-288551ede0de)
