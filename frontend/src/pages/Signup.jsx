@@ -19,7 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signupFunction } from "../utils/signup";
 
 const Signup = () => {
-  const [username, setUsername] = useState("");
+  const [userName, setUsername] = useState("");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -33,8 +33,8 @@ const Signup = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    if (username && fullName && email && password) {
-      const userData = { username, fullName, email, password };
+    if (userName && fullName && email && password) {
+      const userData = { userName, fullName, email, password };
       let res = await signupFunction(userData);
 
       if (res === true) {
@@ -111,7 +111,7 @@ const Signup = () => {
           <Input
             type="text"
             placeholder="Username"
-            value={username}
+            value={userName}
             onChange={(e) => setUsername(e.target.value)}
             mb="4"
           />
@@ -159,7 +159,7 @@ const Signup = () => {
             isLoading={isLoading}
             loadingText="Signing Up..."
             spinner={<Spinner color="white" size="sm" />}
-            isDisabled={!username || !fullName || !email || !password}
+            isDisabled={!userName || !fullName || !email || !password}
             _hover={{
               transform: "translateY(-2px)",
               boxShadow: "lg",

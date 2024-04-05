@@ -1,6 +1,6 @@
 export const signupFunction = async (payload) => {
     try {
-      const response = await fetch('http://localhost:8080/user/register', {
+      const response = await fetch('https://arba-backend-3585.vercel.app/user/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
