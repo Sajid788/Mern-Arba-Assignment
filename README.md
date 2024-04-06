@@ -52,7 +52,8 @@
 
 
 ### 3. Home page
-![Screenshot 2024-04-05 183929](https://github.com/Sajid788/Green-mentor-Assignment/assets/129252454/69dfa906-6af6-40f1-8558-03af65e9dd49)
+![Screenshot 2024-04-06 101751](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/541ac90e-e81b-4773-ab0a-409dc1533f06)
+
 
 ### 3. Term & Condition
 ![Screenshot 2024-04-06 101837](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/5d0ccfce-01ce-46c5-b69c-ad790dae76a3)
