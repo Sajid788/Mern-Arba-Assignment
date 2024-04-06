@@ -1,55 +1,71 @@
-import { cookiesSetter, removeCookie } from "../../utils/cookies";
-import { login_user } from "./api";
-import * as types from "./types";
 
-export const isLoadingHandler = () => {
-  return {
-    type: types.auth_loading_status,
-  };
-};
+import {
+  USER_LOGOUT,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_SIGNUP
+} from './types';
 
-export const isErrorHandler = () => {
-  return {
-    type: types.auth_error_status,
-  };
-};
+import { api } from './api';
 
-export const loginHandler = (payload) => {
-  return {
-    type: types.auth_login_success_status,
-    payload,
-  };
-};
 
-export const logoutHandler = () => {
-  return {
-    type: types.auth_logout_success_status,
-  };
-};
-
-export const handleLoginFunction = (payload) => async (dispatch) => {
-  dispatch(isLoadingHandler());
+export const handleLogin = ({ userName, password }) => async (dispatch) => {
   try {
-    let res = await login_user(payload);
-    if (res.token) {
-      dispatch(loginHandler(res));
-      cookiesSetter(res, `${process.env.REACT_APP_USER_TOKEN}`);
-      return true;
-    } else {
-      dispatch(isErrorHandler());
-      return false;
-    }
+      dispatch({ type: USER_LOGIN_REQUEST });
+      const response = await fetch(`${api}/user/login`, {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userName, password }),
+      });
+      if (!response.ok) {
+          throw new Error("Login failed");
+      }
+      const data = await response.json();
+      const Token = data.token; 
+      localStorage.setItem("token", Token);
+      dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
+      alert("Login successful");
   } catch (error) {
-    dispatch(isErrorHandler());
-    return false;
+      console.log("Login failed:", error);
   }
 };
 
-export const handleLogoutFunction = () => (dispatch) => {
-  dispatch(isLoadingHandler());
-  setTimeout(() => {
-    dispatch(logoutHandler());
-    removeCookie(`${process.env.REACT_APP_USER_TOKEN}`);
-  }, 1500);
-  dispatch(isErrorHandler());
-};
+
+export const handleSignup = ({ fullName, userName, email, password }) => async (dispatch) => {
+    try {
+      const response = await fetch(`${api}/user/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          fullName: fullName,
+          userName: userName,
+          email: email,
+          password: password,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error('Signup failed');
+      }
+      const data = await response.json();
+      console.log(data);
+      dispatch({ type: USER_SIGNUP, payload: data });
+      alert("Signup successful! Please Login");
+    } catch (error) {
+      console.log('Signup failed:', error);
+      
+    }
+  }
+  
+
+  export const handleLogout = () => async (dispatch) => {
+    try {
+      localStorage.removeItem("token");
+      dispatch({ type: USER_LOGOUT });
+    } catch (error) {
+      console.log('Logout failed:', error);
+    }
+  };

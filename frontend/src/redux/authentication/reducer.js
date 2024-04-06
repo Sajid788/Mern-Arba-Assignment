@@ -1,43 +1,30 @@
-
-import { cookiesGetter } from "../../utils/cookies";
-import * as types from "./types";
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGOUT, USER_SIGNUP } from "./types";
 
 const initialState = {
-  userDetails: cookiesGetter(`${process.env.REACT_APP_USER_TOKEN}`) || null,
-  isLoading: false,
-  isError: false,
-  isAuth: cookiesGetter(`${process.env.REACT_APP_USER_TOKEN}`) ? true : false,
-};
+    isAuthenticated : false,
+    isLoading : false,
+    isProfileLoading : false,
+    token : "",
+    userData : {}
+}
 
-export const authReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case types.auth_loading_status: {
-      return { ...state, isLoading: true };
-    }
+export const userReducer = (state = initialState,{type,payload}) =>{
+    switch(type){
+        case USER_LOGIN_REQUEST : return{
+            ...state,isLoading :true
+        }
+        case USER_LOGIN_SUCCESS : return {
+            ...state,
+            isLoading : false,
+            isAuthenticated : true,
+            token : payload,
+        }
+        case USER_SIGNUP : return{
+            ...state,
+            userData : payload
+        }
+        case USER_LOGOUT : return initialState;
 
-    case types.auth_error_status: {
-      return { ...state, isError: true, isLoading: false };
+        default : return state
     }
-    case types.auth_login_success_status: {
-      return {
-        ...state,
-        isError: false,
-        isLoading: false,
-        userDetails: payload,
-        isAuth: true,
-      };
-    }
-
-    case types.auth_logout_success_status: {
-      return {
-        ...state,
-        isError: false,
-        isLoading: false,
-        userDetails: null,
-        isAuth: false,
-      };
-    }
-    default:
-      return state;
-  }
-};
+}
