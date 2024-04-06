@@ -37,8 +37,7 @@ const Navbar = () => {
       </div>
       {
         display ? <div className='navbar-profile-popup'>
-        <Link onClick={()=>setDisplay(!display)} style={{color:"rgb(0,171,197)"}} to={"/cart"}> <span>My store</span></Link>
-        <Link onClick={()=>setDisplay(!display)} style={{color:"rgb(0,171,197)"}} to={"/profile"}><span>Profile</span></Link>
+        <Link onClick={()=>setDisplay(!display)} style={{color:"rgb(0,171,197)"}} to={"/signup"}><span>signup</span></Link>
        <span onClick={logout}>Logout</span>
       </div>  : ""
       }
