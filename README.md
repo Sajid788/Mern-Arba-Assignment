@@ -48,17 +48,18 @@
 
 
 ### 2. Login Page
-![Screenshot 2024-04-06 095710](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/b31ffbe3-6499-4c9c-9d99-f3eaadf7d947)
+![Screenshot 2024-04-06 101751](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/03323b0e-53d5-41fd-96fd-eb3f230698ab)
 
 
 ### 3. Home page
 ![Screenshot 2024-04-05 183929](https://github.com/Sajid788/Green-mentor-Assignment/assets/129252454/69dfa906-6af6-40f1-8558-03af65e9dd49)
 
 ### 3. Term & Condition
-![Screenshot 2024-04-05 184157](https://github.com/Sajid788/Green-mentor-Assignment/assets/129252454/11fff2b9-68d0-4196-8a5b-b0cc847a2660)
+![Screenshot 2024-04-06 101837](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/5d0ccfce-01ce-46c5-b69c-ad790dae76a3)
+
 
 ### 4. Project
-![Screenshot 2024-04-05 200440](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/2ca2809a-d595-4fb8-9787-d4176efb699b)
+![Screenshot 2024-04-06 102025](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/ea58cf8f-0705-4d31-8c14-8744a67a1cf7)
 
 
 
