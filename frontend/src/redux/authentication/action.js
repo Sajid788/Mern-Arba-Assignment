@@ -26,7 +26,6 @@ export const handleLogin = ({ userName, password }) => async (dispatch) => {
       const Token = data.token; 
       localStorage.setItem("token", Token);
       dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
-      alert("Login successful");
   } catch (error) {
       console.log("Login failed:", error);
   }

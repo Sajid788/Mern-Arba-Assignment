@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import dummy from "../assets/sgnup-login.jpg";
 import { FaCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
 const Signup = () => {
   const [userName, setUsername] = useState("");
@@ -10,9 +11,11 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
+  const toast = useToast();
 
   async function handleSignup(e) {
     e.preventDefault();
+   
     try {
       if (password !== confirmPassword) {
         return alert("Password not match!");
@@ -31,7 +34,13 @@ const Signup = () => {
       });
       const data = await response.json();
       console.log(data);
-      // alert("Signup successful! Please login.");
+      toast({
+        title: "Signup successful! Please login",
+        position:"top",
+        status: "success",
+        duration: 3000, 
+        isClosable: true,
+      });
       navigate("/login"); 
     } catch (error) {
       console.log(error);
