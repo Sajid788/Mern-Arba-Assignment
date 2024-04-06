@@ -43,12 +43,14 @@
 - `PATCH`    /product/:id
 
 ### 1. Signup 
-![Screenshot 2024-04-06 094900](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/5040ea65-d27c-4047-94ef-ff9459b29b0c)
+![Screenshot 2024-04-06 112237](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/d199ea7b-7063-4bee-949e-86825b8e4a70)
+
 
 
 
 ### 2. Login Page
-![Screenshot 2024-04-06 101751](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/03323b0e-53d5-41fd-96fd-eb3f230698ab)
+![Uploading Screenshot 2024-04-06 094900.png…]()
+
 
 
 ### 3. Home page
