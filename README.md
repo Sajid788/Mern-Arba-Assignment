@@ -2,7 +2,7 @@
 # Arba-Mern-Stack
 
  ### Frontend 
- live link :- https://storied-marzipan-581e74.netlify.app/
+ live link :- https://arbaass.netlify.app/
  ### Backend 
  live link:- https://arba-backend-3585.vercel.app/
 
@@ -43,11 +43,13 @@
 - `PATCH`    /product/:id
 
 ### 1. Signup 
-![Screenshot 2024-04-05 184019](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/d37de9a0-ba68-4200-9ec5-b576b9f2c3b3)
+![Screenshot 2024-04-06 094900](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/5040ea65-d27c-4047-94ef-ff9459b29b0c)
+
 
 
 ### 2. Login Page
-![Screenshot 2024-04-05 184042](https://github.com/Sajid788/Green-mentor-Assignment/assets/129252454/dac3a480-e70c-4563-9d00-288551ede0de)
+![Screenshot 2024-04-06 095710](https://github.com/Sajid788/Mern-Arba-Assignment/assets/129252454/b31ffbe3-6499-4c9c-9d99-f3eaadf7d947)
+
 
 ### 3. Home page
 ![Screenshot 2024-04-05 183929](https://github.com/Sajid788/Green-mentor-Assignment/assets/129252454/69dfa906-6af6-40f1-8558-03af65e9dd49)
